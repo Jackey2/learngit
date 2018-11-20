@@ -1,0 +1,58 @@
+server:
+  port: 8080 #端口号
+  servlet:
+    context-path: /demo #访问路径
+    session:
+      timeout: 30m
+  address: 127.0.0.1
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  #数据库设置
+  datasource:
+    name: test
+    type: com.alibaba.druid.pool.DruidDataSource #连接池
+    driver-class-name: com.mysql.jdbc.Driver #数据库驱动
+    url: jdbc:mysql://127.0.0.1:3306/test2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC #数据库URL
+    username: root #用户名
+    password: root #密码
+ # mvc:
+  #  #视图解析器
+   # view:
+    #  prefix: /WEB-INF/jsp/
+     # suffix: .jsp
+  #jpa设置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+  thymeleaf:
+    cache: true
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    excluded-view-names:
+    mode: HTML5
+    suffix: .html
+    prefix: classpath:templates/
+    template-resolver-order:
+#mymatis设置
+mybatis:
+  #mapper所在路径
+  mapper-locations:
+    classpath:mapping/*Mapper.xml
+  #实体类所在路径
+  type-aliases-package: com.sxs.demo.enity
+  #配置mybatis打印sql
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
